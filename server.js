@@ -6,10 +6,8 @@ app.use('/', express.static(__dirname + '/public'));
 
 app.get('/:time', (req, res) => {
   let time = req.params.time;
-  console.log(time);
-  console.log(typeof time);
+
   if (!isNaN(time)) {
-    console.log("time is a number");
     const unix = time;
     const natural = new Intl.DateTimeFormat('en-US', {
       month: 'long',
@@ -22,7 +20,6 @@ app.get('/:time', (req, res) => {
       natural
     });
   } else if (Date.parse(time)) {
-
     res.send({
       unix: Date.parse(time),
       natural: new Intl.DateTimeFormat('en-US', {
@@ -38,7 +35,6 @@ app.get('/:time', (req, res) => {
     })
   }
 });
-
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Started server`);
