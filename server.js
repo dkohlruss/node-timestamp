@@ -2,6 +2,8 @@ const express = require('express');
 
 const app = express();
 
+app.use('/', express.static(__dirname + '/public'));
+
 app.get('/:time', (req, res) => {
   let time = req.params.time;
   console.log(time);
@@ -35,7 +37,6 @@ app.get('/:time', (req, res) => {
       natural: null
     })
   }
-
 });
 
 
